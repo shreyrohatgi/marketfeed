@@ -1,0 +1,22 @@
+{
+  "name": "marketfeed",
+  "version": "1.0.0",
+  "description": "App to fetch most popular repositories on basis of number of forks",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node src/app.js"
+  },
+  "author": "Shrey Rohatgi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
