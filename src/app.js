@@ -6,6 +6,10 @@ const app = express();
 dotenv.config();
 app.use(json());
 
+app.get("/", (req, res) => {
+  res.send("Hello");
+})
+
 // Routes
 app.use("/api", githubRoute);
 
