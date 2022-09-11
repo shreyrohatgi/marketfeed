@@ -26,7 +26,7 @@ export const getGithubRepos = async (req, res) => {
         `https://api.github.com/search/repositories?q=forks:>0&sort=forks&order=desc&page=${pageNo}&per_page=${perPage}`,
         {
           headers: {
-            Authorization: `Bearer ${process.env.token}`,
+            Authorization: `token ${process.env.token}`,
           },
         }
       );
@@ -49,7 +49,7 @@ export const getGithubRepos = async (req, res) => {
         const obj = { repoName: repo.name, repoCommitters: [] };
         const commitResp = await axios.get(`${repo.contributors_url}`, {
           headers: {
-            Authorization: `Bearer ${process.env.token}`,
+            Authorization: `token ${process.env.token}`,
           },
         });
         if (commitResp) {
