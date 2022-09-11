@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "node --experimental-modules --es-module-specifier-resolution=node src/index.js"
   },
   "author": "Shrey Rohatgi",
   "license": "ISC",
@@ -17,7 +17,7 @@
     "yup": "^0.32.11"
   },
   "engines": {
-    "node": "16.17.0"
+    "node": "14.18.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
