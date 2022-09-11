@@ -11,7 +11,7 @@ export const getGithubRepos = async (req, res) => {
     await githubSchemaValidator.validate(queryData);
 
     const repoResponse = await axios.get(
-      `https://api.github.com/search/repositories?q=forks:>${queryData.forks}&sort=forks`
+      `https://api.github.com/search/repositories?q=forks:>0&sort=forks`
     );
 
     if (repoResponse.data.items.length <= 0) {
@@ -20,12 +20,11 @@ export const getGithubRepos = async (req, res) => {
 
     const data = [];
     if (repoResponse) {
-      await Promise.all(repoResponse.data.items.map(async (repo) => {
+      await Promise.all(repoResponse.data.items.slice(0, queryData.forks).map(async (repo) => {
         const obj = { repoName: repo.name, repoCommitters: [] };
         const commitResp = await axios.get(`${repo.contributors_url}`);
         if (commitResp) {
-          const committers = commitResp.data.slice(0, queryData.commits);
-          committers.map((commit) => {
+          commitResp.data.slice(0, queryData.commits).map((commit) => {
             obj.repoCommitters.push({ name: `${commit.login}`, commits: `${commit.contributions}` });
           })
         }
