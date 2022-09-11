@@ -17,7 +17,7 @@
     "yup": "^0.32.11"
   },
   "engines": {
-    "node": "14.18.2"
+    "node": "16.17.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
